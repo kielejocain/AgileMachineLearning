@@ -18,7 +18,7 @@ def wrapper_for_nb_in_sklearn(data, current_state_to_predict):
     factors = [[leList[i].transform(x[i]) for i in range(len(x)-1)] for x in data]
     for x in factors:
         print x
-    states = [leList[len(x)-1].transform(x[len(x)-1]) for x in data]
+    states = [leList[1].transform(x[len(x)-1]) for x in data]
     for x in states:
         print x
 
