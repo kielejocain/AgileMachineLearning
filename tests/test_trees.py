@@ -4,6 +4,7 @@ from sklearn.tree import DecisionTreeClassifier
 from Models.trees import wrapper_for_decision_tree_in_sklearn
 from Models.trees import wrapper_for_decision_tree_accuracy
 from tests.data import DIGITS_DATASET
+from Models.trees import wrapper_for_riley_random_forest
 
 
 
@@ -35,3 +36,15 @@ class TestDecisionTrees(TestCase):
 
         self.assertGreaterEqual(score, accuracy_target,
                                 "Write me second - after you get the above test working!")
+
+
+    def test_min_accuracy_of_Riley_Decision_Tree(self):
+        accuracy_target = 0.8  # percent
+        relative_test_set_size = 0.4  # percent
+        data = DIGITS_DATASET['data']
+        labels = DIGITS_DATASET['target']
+
+        score = wrapper_for_riley_random_forest(data,labels)
+        self.assertGreaterEqual(score, accuracy_target,
+                                "Riley Random Forest didn't get above a certain accuracy!")
+
